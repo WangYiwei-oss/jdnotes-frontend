@@ -4,7 +4,7 @@ import router from './router'
 
 Vue.config.productionTip = false
 import './global.less';
-import 'lib-flexible';
+//import 'lib-flexible';
 import 'muse-ui/lib/styles/base.less';
 import { Button, Select, AppBar,Icon,Menu,List,Avatar,Form,TextField } from 'muse-ui'; //引入需要的组件
 import 'muse-ui/lib/styles/theme.less';
