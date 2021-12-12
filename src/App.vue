@@ -1,8 +1,17 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
-<style lang="less">
+<script>
+
+
+export default {
+  name: 'App',
+}
+</script>
+
+<style lang="scss">
+@import "./style/common";
 </style>

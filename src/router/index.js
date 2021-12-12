@@ -1,36 +1,27 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Router from 'vue-router'
+import Login from '../views/Login'
+import Notes from '../views/Notes'
+import notfound from '../views/404page'
 
-Vue.use(VueRouter)
+Vue.use(Router)
 
-const routes = [
-  {
-    path: '/',
-    redirect: {
-      name: 'index'
+export default new Router({
+  routes:[{
+    //登录页
+    path:'/login',
+    name:'Login',
+    component: Login
+  },
+    {
+      //笔记页
+      path:'/notes',
+      name:'Notes',
+      component: Notes
+    },
+    {
+      path:'*',
+      component: notfound
     }
-  },
-  {
-    path: '/index',
-    name: 'index',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Home/Index.vue')
-  },
-  {
-    path: '/notes',
-    name: 'notes',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Notes.vue')
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
-  },
-]
-
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+  ]
 })
-
-export default router
