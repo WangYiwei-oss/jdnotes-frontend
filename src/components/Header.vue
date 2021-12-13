@@ -14,7 +14,7 @@
                        src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
             <el-dropdown-menu slot="dropdown" style="padding: 10px 30px 10px 30px">
               <el-dropdown-item v-for="item in info.person_center" :key="item.name" class="drop_item">
-                <el-link :icon="item.icon"><span>{{item.name}}</span></el-link>
+                <el-link :icon="item.icon" :href="item.link"><span>{{item.name}}</span></el-link>
               </el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
@@ -31,7 +31,6 @@
 </template>
 
 <script>
-
 const links = [
   {
     name: "github",
@@ -48,18 +47,27 @@ const person_center = [
   {
     name: "个人中心",
     icon: "el-icon-user-solid",
+    link: "/personal_center",
   },
   {
-    name: "注册组件",
+    name: "组件管理",
     icon: "el-icon-s-home",
+    link: "/component_management",
   },
   {
     name: "我的笔记",
     icon: "el-icon-s-order",
+    link: "/my_notes",
   },
   {
     name:"设置",
     icon: "el-icon-s-tools",
+    link: "/personal_settings",
+  },
+  {
+    name:"退出登录",
+    icon: "el-icon-switch-button",
+    link: "/logout",
   }
 ]
 export default {
@@ -76,8 +84,7 @@ export default {
   methods:{
     moveheader(event){
       this.percentage = event.clientX / window.outerWidth
-      console.log(this.percentage)
-    }
+    },
   }
 }
 </script>

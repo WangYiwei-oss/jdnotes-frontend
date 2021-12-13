@@ -5,10 +5,15 @@ $themes: (
     note-side-color: #eeeeee,
     note-side-group: #dddddd,
     note-side-title: #ffffff,
+    component_bar_background_color: #eeeeee,
   ),
   dark: (
     background_color: #3f3f40,
     text-color: rgb(255,255,255),
     note-side-color: rgb(60, 63, 65),
+
+    note-side-group: #dddddd,
+    note-side-title: #ffffff,
+    component_bar_background_color: #dddddd,
   )
 );

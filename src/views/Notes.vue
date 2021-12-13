@@ -1,6 +1,7 @@
 <template>
   <el-container id="NotePage" direction="vertical">
     <Header direction="horizontal"></Header>
+    <ComponentBar></ComponentBar>
     <el-container direction="horizontal">
       <NoteSide></NoteSide>
       <NodeMainArea></NodeMainArea>
@@ -12,6 +13,7 @@
 import Header from "../components/Header";
 import NodeMainArea from "../components/NoteMainArea"
 import NoteSide from "../components/NoteSide"
+import ComponentBar from "../components/ComponentBar";
 
 export default {
   name: "Notes",
@@ -29,6 +31,7 @@ export default {
     Header,
     NodeMainArea,
     NoteSide,
+    ComponentBar,
   }
 }
 </script>

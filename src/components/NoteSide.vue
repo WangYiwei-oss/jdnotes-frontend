@@ -1,5 +1,5 @@
 <template>
-  <el-aside width="200px" id="NoteASide">
+  <el-aside width="20%" id="NoteASide">
     <el-menu id="NoteMenu">
       <el-submenu class="note_group" :index="i" v-for="(group,i) in notes_info" :key="i">
         <template slot="title"><i></i>{{i}}</template>

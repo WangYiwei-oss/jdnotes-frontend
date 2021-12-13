@@ -114,7 +114,7 @@ export default {
               sessionStorage.setItem("isLogin",'true');
               this.$router.push('/notes');
             }else{
-              this.$message.error('用户名或密码错误');
+              this.$message.error(res.data.status);
             }
           })
         } else {

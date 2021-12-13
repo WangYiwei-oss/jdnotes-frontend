@@ -7,7 +7,7 @@ import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import Vuex from 'vuex'
-import store from "element-ui/packages/cascader-panel/src/store";
+//import store from "element-ui/packages/cascader-panel/src/store";
 import axios from 'axios'
 
 Vue.use(ElementUI);
@@ -38,6 +38,6 @@ router.beforeEach((to, from, next) => {
 new Vue({
   el: '#app',
   router,
-  store,
+  //store,
   render: h => h(App),
 })
