@@ -3,9 +3,9 @@
     <div id="login-box" >
       <!--这是登录的框-->
       <div id="front" :style="{transform: 'rotateY('+rotate+'deg)'}">
-        <el-form ref="ref_login_form" :model="login_form" :rules="login_rules">
+        <el-form ref="ref_login_form" status-icon :model="login_form" :rules="login_rules">
           <h1>Login</h1>
-          <el-form-item class="inputitem"  label="账户" prop="name">
+          <el-form-item class="inputitem" label="账户" prop="name">
             <el-input class="inputarea" type="text" prefix-icon="el-icon-user-solid" placeholder="请输入用户名" v-model="login_form.name"></el-input>
           </el-form-item>
           <el-form-item class="inputitem" label="密码" prop="password">
@@ -19,7 +19,7 @@
       </div>
       <!--这是注册的框-->
       <div id="back" :style="{transform: 'rotateY('+(rotate+180)+'deg)'}">
-        <el-form ref="ref_register_form" :model="register_form" :rules="register_rules">
+        <el-form ref="ref_register_form" status-icon :model="register_form" :rules="register_rules">
           <h1>Register</h1>
           <el-form-item class="inputitem" label="账户" prop="name">
             <el-input class="inputarea" type="text" prefix-icon="el-icon-user-solid" placeholder="请输入用户名" v-model="register_form.name"></el-input>
@@ -46,6 +46,26 @@ import axios from "axios";
 export default {
   name: "Login",
   data(){
+    //定义注册的规则
+    var validatePass=(rule,value,callback)=>{
+      if (value===''){
+        callback(new Error('请输入密码'));
+      }else{
+        // if (this.register_form.password1!==''){
+        //   this.$refs.register_form.validateField('password1');
+        // }
+        callback();
+      }
+    }
+    var validtaePass2=(rule,value,callback)=>{
+        if (value===''){
+          callback(new Error('请再次输入密码'));
+        }else if (value!==this.register_form.password1){
+          callback(new Error("两次密码输入不一致"));
+        }else{
+          callback();
+        }
+    }
     return{
       //登录的数据
       login_form:{
@@ -79,20 +99,13 @@ export default {
           trigger: 'blur'
         }],
         password1:[{
-          required: true,
-          message: "请输入密码",
+          validator: validatePass,
           trigger: 'blur'
         }],
         password2:[{
-          required: true,
-          message: "请输入密码",
+          validator: validtaePass2,
           trigger: 'blur'
         }],
-      },
-      form_register:{
-        username:"",
-        password1:"",
-        password2:"",
       },
       rotate: 0,
     }
@@ -126,7 +139,18 @@ export default {
     submit_register(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.$router.push('/notes');
+          axios({
+            method: 'post',
+            url: '/api/v1/register',
+            data: this.register_form,
+          }).then(res=>{
+            if(res.data.success===true){
+              sessionStorage.setItem("isLogin",'true');
+              this.$router.push('/notes');
+            }else{
+              this.$message.error(res.data.status);
+            }
+          })
         } else {
           return false;
         }
