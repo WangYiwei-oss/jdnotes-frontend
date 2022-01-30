@@ -19,7 +19,7 @@ module.exports = {
     open: true,
     proxy: {
       "^/api": {
-        target: 'http://127.0.0.1:8081',
+        target: 'http://127.0.0.1:8082',
         changeOrigin: true, // 是否改变域名
         pathRewrite: {
         //   // 路径重写

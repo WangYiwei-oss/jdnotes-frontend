@@ -9,6 +9,10 @@ import ComponentManagement from "../views/ComponentManagement";
 import PersonSettings from "../views/PersonSettings";
 import K8sManagement from "../views/K8sManagement";
 import PrometheusManageMent from "../views/PrometheusManageMent";
+import DeploymentPage from "../components/k8s/DeploymentPage";
+import DashboardPage from "../components/k8s/DashboardPage";
+import PodPage from "../components/k8s/PodPage";
+import ServicePage from "../components/k8s/ServicePage";
 
 Vue.use(Router)
 
@@ -46,10 +50,30 @@ export default new Router({
       name:'ComponentManagement',
       component: ComponentManagement,
     },
+    //k8s相关的路由
     {
       path:'/k8s_management',
       name:'K8sManagement',
       component: K8sManagement,
+      redirect: '/k8s_management/dashboard',
+      children: [
+        {
+          path: 'dashboard',
+          component: DashboardPage
+        },
+        {
+          path: 'deployments',
+          component: DeploymentPage
+        },
+        {
+          path: 'pods',
+          component: PodPage
+        },
+        {
+          path: 'services',
+          component: ServicePage
+        }
+      ]
     },
     {
       path:'/prometheus_manage',

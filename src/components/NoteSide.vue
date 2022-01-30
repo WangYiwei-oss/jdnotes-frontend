@@ -3,7 +3,7 @@
     <el-menu id="NoteMenu">
       <el-submenu class="note_group" :index="i" v-for="(group,i) in notes_info" :key="i">
         <template slot="title"><i></i>{{i}}</template>
-          <el-menu-item class="note_title" index="note" v-for="note in group" :key="note">{{note}}</el-menu-item>
+          <el-menu-item class="note_title" :index="note" v-for="note in group" :key="note">{{note}}</el-menu-item>
       </el-submenu>
     </el-menu>
   </el-aside>
