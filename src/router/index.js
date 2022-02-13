@@ -13,7 +13,10 @@ import DeploymentPage from "../components/k8s/DeploymentPage";
 import DashboardPage from "../components/k8s/DashboardPage";
 import PodPage from "../components/k8s/PodPage";
 import ServicePage from "../components/k8s/ServicePage";
-
+import SecretPage from "../components/k8s/SecretPage";
+import ConfigMapPage from "../components/k8s/ConfigMapPage";
+import IngressPage from "../components/k8s/IngressPage";
+import PodShell from "../components/k8s/PodShell";  //测试用
 Vue.use(Router)
 
 export default new Router({
@@ -72,7 +75,23 @@ export default new Router({
         {
           path: 'services',
           component: ServicePage
-        }
+        },
+        {
+          path: 'secret',
+          component: SecretPage
+        },
+        {
+          path: 'configmap',
+          component: ConfigMapPage
+        },
+        {
+          path: 'ingresses',
+          component: IngressPage
+        },
+        {
+          path: 'podshell',
+          component: PodShell,
+        },
       ]
     },
     {

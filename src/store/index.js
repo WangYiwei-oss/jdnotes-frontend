@@ -10,13 +10,17 @@ const state={
     currentUser: null,
     isLogin: false,
     token: "",
-  }
+  },
+  current_namespace:"default"
 };
 
 //监听state对象的值的最新状态（计算属性）
 const getters={
   getUser(state){
     return state.user;
+  },
+  getCurrentNamespace(status){
+    return state.current_namespace;
   }
 }
 

@@ -1,5 +1,5 @@
 <template>
-    <el-header height="220px">
+    <el-header height="220px" style="font-size: 18px">
       <el-row :gutter="30" id="upper_bar">
         <el-col :span="2"><div>
           <el-link :underline="false" id="LOGO">JDNotes</el-link>

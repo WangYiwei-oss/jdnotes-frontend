@@ -1,8 +1,9 @@
 <template>
   <div id="k8s_config_bar">
-    <el-menu mode="horizontal">
+    <el-menu mode="horizontal" menu-trigger="click">
       <el-submenu index="1">
-        <template slot="title">Namespace</template>
+        <template slot="title">
+          <span>Namespace</span> <span style="font-size: smaller;color: gray">{{current_ns}}</span></template>
         <el-menu-item
           v-for="ns in namespace_list"
           :index="ns"
@@ -18,10 +19,12 @@ export default {
   data(){
     return{
       namespace_list:[],
+      current_ns:"default",
     }
   },
   methods:{
     changeNamespace(ns){
+      this.current_ns=ns;
       this.$emit('new-namespace',ns);
     }
   },
